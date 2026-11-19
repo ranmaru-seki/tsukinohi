@@ -12,7 +12,7 @@ import { nav, shop } from '../data/site';
         <a href="/">トップ</a>
         {nav.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
-      <p>※本サイトはポートフォリオ用に制作した架空の店舗です。　© {shop.nameEn}</p>
+      <p>※本サイトはポートフォリオ用に制作した架空の店舗です。　© {new Date().getFullYear()} {shop.nameEn}</p>
     </div>
   </div>
 </footer>
