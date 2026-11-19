@@ -1,0 +1,34 @@
+---
+import { menu } from '../data/site';
+import Photo from './Photo.astro';
+
+interface Props {
+  /** お品書きページでは写真と説明を出す */
+  detail?: boolean;
+}
+const { detail = false } = Astro.props;
+---
+<div class="menu-grid">
+  {menu.map((group) => (
+    <div class="menu-group">
+      {detail && (
+        <div class="menu-group__photo">
+          <Photo label={group.photo?.alt ?? group.title} src={group.photo?.src} position={group.photo?.position} />
+        </div>
+      )}
+      <h3 class="menu-group__title">{group.title}<span class="menu-group__en">{group.en}</span></h3>
+      {detail && <p class="menu-group__lead">{group.lead}</p>}
+      <ul>
+        {(detail ? group.items : group.items.slice(0, 3)).map((item) => (
+          <li class="menu-item">
+            <span>
+              {item.name}
+              {detail && item.note && <span class="menu-item__note">{item.note}</span>}
+            </span>
+            <span class="menu-item__price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

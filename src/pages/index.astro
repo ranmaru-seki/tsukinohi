@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Photo from '../components/Photo.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import MenuList from '../components/MenuList.astro';
+import ShopInfo from '../components/ShopInfo.astro';
+import { shop, seats } from '../data/site';
+---
+<BaseLayout description="18時から26時まで開いている、夜だけの喫茶店「月ノ灯」。約千冊の本と、夜に飲みやすい珈琲で、ひとりの時間をゆっくりと。">
+  <section class="container hero">
+    <div class="hero__visual">
+      <Photo label="キャンドルの灯るテーブルと珈琲" src="/images/hero-night.webp" position="50% 90%" eager />
+    </div>
+    <div class="hero__body">
+      <svg class="hero__moon" aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"></path></svg>
+      <h1 class="hero__title">本と珈琲と、<br />静かな夜。</h1>
+      <p class="hero__lead">仕事帰りに、眠れない夜に。ひとりで過ごすための、夜だけの喫茶店です。</p>
+      <p class="hero__open"><span>OPEN</span>{shop.hours.replace('〜', ' – ')}</p>
+    </div>
+  </section>
+
+  <section class="band section concept-bg">
+    <div class="concept-bg__photo" aria-hidden="true">
+      <Photo label="シャンデリアと灯りに照らされた本棚" src="/images/concept.webp" position="50% 60%" />
+    </div>
+    <div class="container concept">
+      <p class="heading__en">CONCEPT</p>
+      <h2 class="concept__title">会話よりも、ページをめくる音を。</h2>
+      <p>店内にはおよそ千冊の本があり、どれでも自由に読めます。<br />おしゃべりは控えめに。ひとりの時間を、ゆっくり楽しんでください。</p>
+      <a href="/books/" class="btn">本と過ごし方</a>
+    </div>
+  </section>
+
+  <section class="container section">
+    <SectionHeading en="MENU" title="お品書き" />
+    <MenuList />
+    <div class="section-more"><a href="/menu/" class="btn">お品書きをすべて見る</a></div>
+  </section>
+
+  <section class="band section">
+    <div class="container">
+      <SectionHeading en="SEATS" title="お席" />
+      <div class="card-grid">
+        {seats.map((seat) => (
+          <article class="card">
+            <div class="card__photo"><Photo label={seat.name} src={seat.src} /></div>
+            <h3 class="card__title">{seat.name}</h3>
+            <p class="card__text">{seat.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <ShopInfo />
+  </section>
+</BaseLayout>

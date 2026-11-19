@@ -1,0 +1,19 @@
+---
+interface Props {
+  en: string;
+  title: string;
+  text?: string;
+}
+const { en, title, text } = Astro.props;
+---
+<section class="container page-hero">
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <ol>
+      <li><a href="/">トップ</a></li>
+      <li aria-current="page">{title}</li>
+    </ol>
+  </nav>
+  <p class="page-hero__en">{en}</p>
+  <h1 class="page-hero__title">{title}</h1>
+  {text && <p class="page-hero__text">{text}</p>}
+</section>

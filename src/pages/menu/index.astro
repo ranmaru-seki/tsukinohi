@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import MenuList from '../../components/MenuList.astro';
+import NextLinks from '../../components/NextLinks.astro';
+import { shop } from '../../data/site';
+---
+<BaseLayout title="お品書き" description="月ノ灯のお品書き。夜でも飲みやすい珈琲、甘さ控えめの夜の甘いもの、少しだけのお酒。">
+  <PageHero en="MENU" title="お品書き" text={`ご注文は${shop.lastOrder.replace('L.O. ', '')}まで。価格はすべて税込です。`} />
+  <section class="container section">
+    <MenuList detail />
+  </section>
+  <NextLinks />
+</BaseLayout>

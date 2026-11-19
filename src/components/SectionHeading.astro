@@ -1,0 +1,14 @@
+---
+interface Props {
+  en: string;
+  title: string;
+  /** ページの h1 として使うとき */
+  level?: 'h1' | 'h2';
+}
+const { en, title, level = 'h2' } = Astro.props;
+const Tag = level;
+---
+<div class="heading">
+  <p class="heading__en">{en}</p>
+  <Tag class="heading__title">{title}</Tag>
+</div>

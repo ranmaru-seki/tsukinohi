@@ -1,0 +1,26 @@
+---
+// src を渡すと写真を表示。未指定のときはプレースホルダーを表示する
+interface Props {
+  label: string;
+  src?: string;
+  position?: string;
+  /** ファーストビューの画像は true（遅延読み込みしない） */
+  eager?: boolean;
+  class?: string;
+}
+const { label, src, position, eager = false, class: className } = Astro.props;
+---
+{src ? (
+  <img
+    class:list={['photo', 'photo--img', className]}
+    src={src}
+    alt={label}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    style={position ? `object-position: ${position}` : undefined}
+  />
+) : (
+  <div class:list={['photo', className]} role="img" aria-label={label}>
+    <span class="photo__chip">PHOTO｜{label}</span>
+  </div>
+)}

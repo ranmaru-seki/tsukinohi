@@ -1,0 +1,31 @@
+---
+import { shop } from '../data/site';
+
+interface Props {
+  /** トップでは h2、ご案内ページでは見出しを出さない */
+  heading?: boolean;
+}
+const { heading = true } = Astro.props;
+---
+<div class="info">
+  <div class="info__body">
+    {heading && <h2 class="info__title">ご案内</h2>}
+    <dl class="dl">
+      <dt>住所</dt><dd>〒000-0000 {shop.address}</dd>
+      <dt>アクセス</dt><dd>{shop.station}から{shop.walk}</dd>
+      <dt>営業</dt><dd>{shop.hours}（{shop.lastOrder}）</dd>
+      <dt>定休日</dt><dd>{shop.closed}</dd>
+      <dt>お席</dt><dd>{shop.seats}</dd>
+      <dt>お約束</dt><dd>会話は小声で／通話はご遠慮ください／2名様まで</dd>
+    </dl>
+  </div>
+  <div class="info__map">
+    <iframe
+      src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%A7%85&output=embed"
+      title="地図（Googleマップ）"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+</div>

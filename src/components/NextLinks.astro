@@ -1,0 +1,16 @@
+---
+// ページ下の回遊リンク（今いるページは除く）
+import { nav } from '../data/site';
+const path = Astro.url.pathname;
+const links = nav.filter((item) => !path.startsWith(item.href));
+---
+<section class="container section" aria-label="ほかのページ">
+  <div class="next-links">
+    {links.map((item) => (
+      <a href={item.href} class="next-link">
+        <span class="next-link__en">{item.en}</span>
+        <span class="next-link__label">{item.label} →</span>
+      </a>
+    ))}
+  </div>
+</section>

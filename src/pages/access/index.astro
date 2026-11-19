@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ShopInfo from '../../components/ShopInfo.astro';
+import NextLinks from '../../components/NextLinks.astro';
+import { shop } from '../../data/site';
+---
+<BaseLayout title="ご案内" description={`月ノ灯へのアクセスと営業時間。${shop.station}から${shop.walk}、ビルの2階です。`}>
+  <PageHero en="ACCESS" title="ご案内" text={`${shop.station}から${shop.walk}。ビルの2階、月のマークの小さな看板が目印です。`} />
+  <section class="container section">
+    <ShopInfo heading={false} />
+  </section>
+  <NextLinks />
+</BaseLayout>

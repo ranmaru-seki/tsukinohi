@@ -1,0 +1,18 @@
+---
+import { nav, shop } from '../data/site';
+---
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <a href="/" class="site-footer__name">{shop.name}</a>
+      <p>{shop.address}　営業 {shop.hours}／定休 {shop.closed}</p>
+    </div>
+    <div>
+      <nav class="site-footer__nav" aria-label="フッターメニュー">
+        <a href="/">トップ</a>
+        {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <p>※本サイトはポートフォリオ用に制作した架空の店舗です。　© {shop.nameEn}</p>
+    </div>
+  </div>
+</footer>

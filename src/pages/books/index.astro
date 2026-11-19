@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Photo from '../../components/Photo.astro';
+import NextLinks from '../../components/NextLinks.astro';
+import { shelves, rules } from '../../data/site';
+---
+<BaseLayout title="本と過ごし方" description="月ノ灯の本棚と、静かな夜を過ごすためのお約束。店内の本はどれでも自由に読めます。">
+  <PageHero en="BOOKS" title="本と過ごし方" text="店内にはおよそ千冊の本があります。どれでも自由に手にとって、席でゆっくりどうぞ。" />
+
+  <section class="container section">
+    <SectionHeading en="BOOKSHELF" title="本棚" />
+    <div class="shelf">
+      <div class="shelf__photo">
+        <Photo label="ランプの灯る本棚とソファ" src="/images/shelf-books.webp" position="50% 30%" />
+      </div>
+      <ol class="shelf__list">
+        {shelves.map((shelf, i) => (
+          <li class="shelf__item">
+            <span class="shelf__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="shelf__title">{shelf.name}</h3>
+              <p class="shelf__text">{shelf.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="band section">
+    <div class="container">
+      <SectionHeading en="RULES" title="静かな夜のための、お約束" />
+      <ol class="rules">
+        {rules.map((rule) => (
+          <li class="rule">
+            <div>
+              <h3 class="rule__title">{rule.title}</h3>
+              <p class="rule__text">{rule.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <NextLinks />
+</BaseLayout>
